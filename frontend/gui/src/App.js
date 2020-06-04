@@ -8,9 +8,11 @@ import CustomLayout from './containers/Layout';
 import ArticleList from './containers/ArticleListView';
 import axios from 'axios';
 import OtherLayersExample from './components/Tryout';
+import MyCircle from './components/Custom_Circle';
+
 
 import L from 'leaflet';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
 
 
 var myIcon = L.icon({
@@ -19,6 +21,40 @@ var myIcon = L.icon({
   iconAnchor: [12.5, 41],
   popupAnchor: [0, -41]
 })
+
+var fireExt = L.icon({
+  iconUrl: require('./components/fire_extinguisher.png'),
+  iconSize: [25, 41],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [0, -41]
+})
+
+var defibr = L.icon({
+  iconUrl: require('./components/defibrillator.png'),
+  iconSize: [25, 25],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [0, -41]
+})
+
+var exit = L.icon({
+  iconUrl: require('./components/exit.jpg'),
+  iconSize: [25, 25],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [0, -41]
+})
+
+/*
+const map_bounds = [
+  [51.026067, 13.721950],
+  [51.024899, 13.723831],
+]
+*/
+
+// right bounds, spored stranicata find box
+const map_bounds = [
+  [51.024681, 13.721892], [51.026129, 13.724408]
+]
+
 
 class App extends Component {
 
@@ -29,8 +65,13 @@ class App extends Component {
     image: null,
     lat: 51.025650,
     lng: 13.723321,
-    zoom: 1000,
-    maxZoom: 2000
+    zoom: 500,
+    maxZoom: 600,
+    minZoom: 500,
+    // prvior e vo fokus toj, okolu koj ke bide krugot
+    //detected_elements: ['fire_extinguisher', 'exit']
+    detected_elements: ['exit']
+
   }
 
 
@@ -70,6 +111,14 @@ class App extends Component {
   render() {
     const position = [this.state.lat, this.state.lng]
 
+    const position_fireext = [51.025728, 13.722753]
+    const position_fireext2 = [51.025192, 13.723450]
+    //const position_defibr = [51.025192, 13.723170]
+
+    const position_defibr = [51.025273, 13.722934]
+    const position_exit = [51.025685, 13.722994]
+
+    console.log("detected: ", this.state.detected_elements)
 
     return (
       <div className="App">
@@ -97,7 +146,7 @@ class App extends Component {
         </form>
 
         <h3>Map</h3>
-        <Map className="map" center={position} zoom={this.state.zoom}>
+        <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -107,10 +156,37 @@ class App extends Component {
               A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
           </Marker>
+
+          <Marker position={position_fireext} icon={fireExt}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+          </Marker>
+
+          <Marker position={position_fireext2} icon={fireExt}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+          </Marker>
+
+          <Marker position={position_defibr} icon={defibr}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+          </Marker>
+
+          <Marker position={position_exit} icon={exit}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+          </Marker>
+
+          <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
+
         </Map>
         <h4>Other map</h4>
         <OtherLayersExample />
-      </div>
+      </div >
     );
   }
 }
