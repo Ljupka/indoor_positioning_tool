@@ -24,7 +24,9 @@ const evacuation_objects = {
     'defibrillator': position_defibr
 };
 
-const detected_objects = ['fire_extinguisher', 'exit'];
+//const detected_objects = ['fire_extinguisher', 'exit'];
+const detected_objects = ['defibrillator'];
+
 const object_in_focus = detected_objects[0];
 
 

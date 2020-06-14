@@ -7,7 +7,7 @@ from indoor_app.models import Article, Image
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ('title', 'content', 'image')
+        fields = '__all__'
 
 
 class ImageSerializer(serializers.ModelSerializer):

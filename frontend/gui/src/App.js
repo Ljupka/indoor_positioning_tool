@@ -9,6 +9,7 @@ import ArticleList from './containers/ArticleListView';
 import axios from 'axios';
 import OtherLayersExample from './components/Tryout';
 import MyCircle from './components/Custom_Circle';
+import ImageUpload from './components/image_preview';
 
 
 import L from 'leaflet';
@@ -120,14 +121,18 @@ class App extends Component {
 
     console.log("detected: ", this.state.detected_elements)
 
-    return (
-      <div className="App">
-        <Router>
+    /*in return was
+            <Router>
           <CustomLayout>
             <BaseRouter />
           </CustomLayout>
         </Router>
+    */
 
+    return (
+      <div className="App">
+
+        <ImageUpload />
         <h2>Upload Image</h2>
         <form onSubmit={this.handleSubmit}>
           <p>
@@ -184,8 +189,7 @@ class App extends Component {
           <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
 
         </Map>
-        <h4>Other map</h4>
-        <OtherLayersExample />
+
       </div >
     );
   }
