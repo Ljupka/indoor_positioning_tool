@@ -70,12 +70,12 @@ class MyCircle extends Component {
         if (detected_objects.length === 1) {
 
             //razmisli kako da se pretstavi ova
-            /*
+
             if (object_in_focus === "fire_extinguisher") {
                 // return uncertainty
-                return 
+                showDifferentPossibilites();
             }
-            */
+
 
             if (object_in_focus === "defibrillator") {
                 return evacuation_objects["defibrillator"];
@@ -149,6 +149,13 @@ class MyCircle extends Component {
 
 
         }
+
+    }
+
+
+    showDifferentPossibilites(object_type) {
+        // count how many objects of this type are there
+        console.log("not yet implemented")
 
     }
 
