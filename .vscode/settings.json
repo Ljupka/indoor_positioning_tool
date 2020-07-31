@@ -8,5 +8,7 @@
         "--load-plugins=pylint_django"
     ],
     "python.linting.pylintEnabled": true,
-    "python.venvPath": "${workspaceFolder}/backend/env/bin/python3"
+    "python.venvPath": "${workspaceFolder}/backend/env/bin/python3",
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.dragAndDrop": false
 }

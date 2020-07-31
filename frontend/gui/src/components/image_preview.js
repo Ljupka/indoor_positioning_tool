@@ -24,6 +24,7 @@ class ImageUpload extends Component {
                 console.log(res.data);
             })
             .catch(err => console.log(err))
+
     }
 
     _handleImageChange(e) {

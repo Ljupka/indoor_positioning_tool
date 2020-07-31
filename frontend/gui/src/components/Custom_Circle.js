@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Circle } from 'react-leaflet';
+import { Circle, LeafletConsumer, Popup } from 'react-leaflet';
 import CustomForm from './Form';
 import { circle } from 'leaflet';
+
 
 
 //  <Circle center={position_fireext} fillColor="blue" radius={20} />
 
 
-const nr_fireext = 2
-const nr_defibr = 1
-const nr_exit = 1
+
 
 const position_fireext = [51.025728, 13.722753]
 const position_fireext2 = [51.025192, 13.723450]
@@ -24,10 +23,31 @@ const evacuation_objects = {
     'defibrillator': position_defibr
 };
 
+
+// can be stored in a database in the future
+const evacuation_objects_2 = [
+    { "id": 1, "type": "fire_extinguisher", "coordinates": position_fireext },
+    { "id": 2, "type": "exit", "coordinates": position_exit },
+    { "id": 3, "type": "fire_extinguisher", "coordinates": position_fireext2 },
+    { "id": 4, "type": "defibrillator", "coordinates": position_defibr }
+]
+
+const nr_fireext = 2
+const nr_defibr = 1
+const nr_exit = 1
+
+
+
 //const detected_objects = ['fire_extinguisher', 'exit'];
-const detected_objects = ['defibrillator'];
+const detected_objects = ['fire_extinguisher'];
 
 const object_in_focus = detected_objects[0];
+
+const radius = 0.000300;
+
+var certain_position = true
+var map_positions = [];
+var certainty = 0;
 
 
 
@@ -73,7 +93,8 @@ class MyCircle extends Component {
 
             if (object_in_focus === "fire_extinguisher") {
                 // return uncertainty
-                showDifferentPossibilites();
+                //showDifferentPossibilites();
+
             }
 
 
@@ -153,15 +174,178 @@ class MyCircle extends Component {
     }
 
 
+
+
+
+    createRanges(r) {
+
+        for (var obj in evacuation_objects_2) {
+
+            var objects_inside_circle = [];
+
+            var center = evacuation_objects_2[obj];
+            console.log("center1 is ", evacuation_objects_2[obj])
+
+            for (var obj2 in evacuation_objects_2) {
+
+                console.log("obj2 is ", obj2)
+                if (obj2 !== center) {
+                    if (this.isElementInsideCircle(evacuation_objects_2[obj2], center, r)) {
+
+                        objects_inside_circle.push({ key: obj2, value: evacuation_objects_2[obj2] })
+                    }
+                }
+            }
+            console.log("objects inside circle are ", objects_inside_circle);
+
+            // check if object inside circle are the same as detected objects
+            // if (object_inside_circle.indexOf("exit") > -1 && object_inside_circle.indexOf("fire_extinguisher1") > -1){
+
+
+
+
+        }
+    }
+
+    findPosition2() {
+
+        if (detected_objects.length === 1) {
+
+            //razmisli kako da se pretstavi ova
+
+
+            if (object_in_focus === "fire_extinguisher") {
+
+                // return uncertainty
+
+                // as # fire extinguishers > 1 the position on the map will be uncertain
+                certain_position = false;
+                this.showDifferentPossibilites("fire_extinguisher");
+            }
+
+
+
+            if (object_in_focus === "defibrillator") {
+
+                var result_elem = null
+                for (var i = 0; i < evacuation_objects_2.length; i++) {
+
+                    if (evacuation_objects_2[i].type === "defibrillator") {
+                        result_elem = evacuation_objects_2[i].coordinates;
+                    }
+                }
+                return result_elem;
+            }
+
+            if (object_in_focus === "exit") {
+
+                var result_elem = null
+                for (var i = 0; i < evacuation_objects_2.length; i++) {
+                    if (evacuation_objects_2[i].type === "exit") {
+                        result_elem = evacuation_objects_2[i].coordinates;
+                    }
+                }
+                return result_elem;
+            }
+        }
+
+        else {
+            // if detected_objects.length > 1
+
+            for (var obj in evacuation_objects_2) {
+
+                var objects_inside_circle = [];
+                var types_in_circle = [];
+
+
+                var center = evacuation_objects_2[obj].coordinates;
+                console.log("center is 2 ", obj)
+
+                for (var obj2 in evacuation_objects_2) {
+
+                    console.log("obj2 is  2", obj2)
+                    if (obj2 !== center) {
+                        if (this.isElementInsideCircle(evacuation_objects_2[obj2].coordinates, center, 0.000300)) {
+
+                            objects_inside_circle.push({ "id": evacuation_objects_2[obj2].id, "type": evacuation_objects_2[obj2].type, "coordinates": evacuation_objects_2[obj2].coordinates })
+                        }
+                    }
+                }
+
+                if (objects_inside_circle.length > 0) {
+                    console.log("objects inside circle are 2", objects_inside_circle);
+
+                    // check if object inside circle are the same as detected objects
+                    // if (object_inside_circle.indexOf("exit") > -1 && object_inside_circle.indexOf("fire_extinguisher1") > -1){
+
+                    // result object in center
+                    var result_object = null;
+
+
+                    // types in circle da bide globalna V tuka samo push
+
+
+                    var types_in_circle = []
+
+                    for (var t = 0; t < objects_inside_circle.length; t++) {
+                        console.log("elli is ", objects_inside_circle[t].type)
+                        types_in_circle.push(objects_inside_circle[t].type)
+                    }
+
+
+                    console.log("solja inside circles are ", objects_inside_circle)
+
+
+                    var intersection = detected_objects.filter(value => -1 !== types_in_circle.indexOf(value));
+
+                    console.log("intersection is 2 ", intersection)
+
+
+                    console.log("2 objects_inside_circle is ", types_in_circle)
+                    console.log("detected obj is ", detected_objects)
+
+                    if (this.checkIfSame(types_in_circle, detected_objects)) {
+
+                        console.log("objects inside circle final 2: ", objects_inside_circle);
+                        var element_in_focus = this.getCoordinatesOfElementInFocus2(objects_inside_circle);
+                        console.log("result is ", element_in_focus)
+
+                        // mesto element_in_focus da returnnam 
+                        return element_in_focus;
+                    }
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+
     showDifferentPossibilites(object_type) {
         // count how many objects of this type are there
-        console.log("not yet implemented")
 
+        var elems_count = this.getNrofElements(object_type);
+
+
+        for (var i = 0; i < evacuation_objects_2.length; i++) {
+            if (evacuation_objects_2[i].type === "fire_extinguisher") {
+                map_positions.push(evacuation_objects_2[i].coordinates);
+            }
+        }
+
+        var position_certainty = 1 / elems_count;
+
+        console.log("position certainty ", elems_count)
+
+        certainty = position_certainty;
     }
 
     // check if 2 lists contain same elements
     checkIfSame(list1, list2) {
-        console.log(" check in same", list1)
+        console.log(" check in same", list1, list2)
 
         for (var m = 0; m < list1.length; m++) {
             console.log("check o is ", list1[m])
@@ -175,6 +359,18 @@ class MyCircle extends Component {
         }
         return true;
 
+    }
+
+    // get number of each of the element of type @object_type on the map
+    getNrofElements(object_type) {
+        if (object_type === "fire_extinguisher")
+            return nr_fireext;
+
+        if (object_type === "exit")
+            return nr_exit;
+
+        if (object_type === "defibrillator")
+            return nr_defibr;
     }
 
 
@@ -215,6 +411,44 @@ class MyCircle extends Component {
 
     }
 
+
+    // get the coordinates of the element in focus
+    getCoordinatesOfElementInFocus2(elements_in_circle) {
+
+        var coordinates_of_focus = null;
+
+        for (var i = 0; i < elements_in_circle.length; i++) {
+
+            var el = elements_in_circle[i]
+            console.log("el is ", el)
+
+            if (object_in_focus === "fire_extinguisher") {
+                if (el.type === "fire_extinguisher") {
+                    coordinates_of_focus = el.coordinates;
+                    break;
+                }
+            }
+            if (object_in_focus === "defibrillator") {
+
+                if (el.type === "defibrillator") {
+                    coordinates_of_focus = el.coordinates;
+                    break;
+                }
+            }
+
+            if (object_in_focus === "exit") {
+
+                if (el.type === "exit") {
+                    coordinates_of_focus = el.coordinates;
+                    break;
+                }
+            }
+        }
+
+        return coordinates_of_focus;
+
+    }
+
     calculateCertainty() {
         if (detected_objects.length === 1) {
             if (object_in_focus === "fire_extinguisher") {
@@ -243,15 +477,40 @@ class MyCircle extends Component {
         // mislam posle ke mora preku komponent da se prenesat...
         const detected_objects = this.props.elements;
 
-        circle_center = this.findPosition();
+        //circle_center = this.findPosition();
+        circle_center = this.findPosition2();
 
-
+        // ova bese <div>{this.findPosition()}</div>
 
         return (
-            <div>
-                <Circle center={circle_center} fillColor="blue" radius={20} />
-                <div>{this.findPosition()}</div>
+
+            <div> {
+                certain_position ?
+                    <div>
+                        <Circle center={circle_center} fillColor="blue" radius={20} />
+                        <div>{this.createRanges(radius)}</div>
+                        <div>{this.findPosition2()}</div>
+                    </div>
+                    :
+                    <div>
+
+                        {map_positions.map(function (position, i) {
+                            return <div>
+
+                                <Circle center={map_positions[i]} fillColor="blue" radius={20} />
+                                <Popup position={map_positions[i]} >
+                                    You are here with {certainty} probability.
+                                </Popup>
+
+                            </div>;
+                        })}
+
+                    </div>
+
+            }
             </div>
+
+
 
         );
     }

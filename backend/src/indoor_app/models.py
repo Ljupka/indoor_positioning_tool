@@ -9,6 +9,7 @@ def upload_path(instance, filename):
 
 class Article (models.Model):
     image = models.ImageField(blank=True, null=True, upload_to=upload_path)
+    detected_objects = models.CharField(max_length=200, default="none")
 
     def __str__(self):
         return self.title
