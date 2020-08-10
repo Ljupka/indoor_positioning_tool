@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Alert } from 'antd';
 
 
 class ImageUpload extends Component {
     constructor(props) {
         super(props);
-        this.state = { file: '', imagePreviewUrl: '' };
+        this.state = { file: '', imagePreviewUrl: '', showAlert: false };
     }
 
     _handleSubmit(e) {
@@ -22,6 +23,8 @@ class ImageUpload extends Component {
         })
             .then(res => {
                 console.log(res.data);
+
+                this.setState({ showAlert: true })
             })
             .catch(err => console.log(err))
 
@@ -46,14 +49,27 @@ class ImageUpload extends Component {
     render() {
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
+        let alert_box = null;
+
         if (imagePreviewUrl) {
             $imagePreview = (<img src={imagePreviewUrl} />);
         } else {
             $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
         }
 
+        if (this.state.showAlert === true) {
+            console.log("its true")
+            alert_box = (<Alert showAlert={this.state.showAlert} message={"Detected objects are: " + this.props.elements} type="success" />);
+        }
+        else { console.log("its false") }
+
+
         return (
             <div className="previewComponent">
+
+                <div>
+                    {alert_box}
+                </div>
                 <form onSubmit={(e) => this._handleSubmit(e)}>
                     <input className="fileInput"
                         type="file"
@@ -65,8 +81,10 @@ class ImageUpload extends Component {
                 <div className="imgPreview">
                     {$imagePreview}
                 </div>
+
             </div>
         )
+
     }
 }
 

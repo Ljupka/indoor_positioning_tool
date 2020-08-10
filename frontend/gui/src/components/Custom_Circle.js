@@ -39,9 +39,9 @@ const nr_exit = 1
 
 
 //const detected_objects = ['fire_extinguisher', 'exit'];
-const detected_objects = ['fire_extinguisher'];
+//const detected_objects = ['fire_extinguisher'];
 
-const object_in_focus = detected_objects[0];
+//const object_in_focus = detected_objects[0];
 
 const radius = 0.000300;
 
@@ -52,6 +52,15 @@ var certainty = 0;
 
 
 class MyCircle extends Component {
+
+    constructor(props) {
+        super(props);
+        this.detected_objects = this.props.elements;
+        this.object_in_focus = this.detected_objects[0];
+        this.state = {};
+    }
+
+
 
 
 
@@ -87,22 +96,22 @@ class MyCircle extends Component {
 
     findPosition() {
 
-        if (detected_objects.length === 1) {
+        if (this.detected_objects.length === 1) {
 
             //razmisli kako da se pretstavi ova
 
-            if (object_in_focus === "fire_extinguisher") {
+            if (this.object_in_focus === "fire_extinguisher") {
                 // return uncertainty
                 //showDifferentPossibilites();
 
             }
 
 
-            if (object_in_focus === "defibrillator") {
+            if (this.object_in_focus === "defibrillator") {
                 return evacuation_objects["defibrillator"];
             }
 
-            if (object_in_focus === "exit") {
+            if (this.object_in_focus === "exit") {
                 return evacuation_objects["exit"];
             }
         }
@@ -151,14 +160,14 @@ class MyCircle extends Component {
                     }
                 }
 
-                var intersection = detected_objects.filter(value => -1 !== formatted_list.indexOf(value));
-                console.log("detected objects is ", detected_objects)
+                var intersection = this.detected_objects.filter(value => -1 !== formatted_list.indexOf(value));
+                console.log("detected objects is ", this.detected_objects)
                 console.log("object inside circle ", formatted_list)
                 console.log("intersection is ", intersection)
 
 
 
-                if (this.checkIfSame(formatted_list, detected_objects)) {
+                if (this.checkIfSame(formatted_list, this.detected_objects)) {
 
                     console.log("objects inside circle final: ", objects_inside_circle);
                     var element_in_focus = this.getCoordinatesOfElementInFocus(objects_inside_circle);
@@ -209,12 +218,12 @@ class MyCircle extends Component {
 
     findPosition2() {
 
-        if (detected_objects.length === 1) {
+        if (this.detected_objects.length === 1) {
 
             //razmisli kako da se pretstavi ova
 
 
-            if (object_in_focus === "fire_extinguisher") {
+            if (this.object_in_focus === "fire_extinguisher") {
 
                 // return uncertainty
 
@@ -225,7 +234,7 @@ class MyCircle extends Component {
 
 
 
-            if (object_in_focus === "defibrillator") {
+            if (this.object_in_focus === "defibrillator") {
 
                 var result_elem = null
                 for (var i = 0; i < evacuation_objects_2.length; i++) {
@@ -237,7 +246,7 @@ class MyCircle extends Component {
                 return result_elem;
             }
 
-            if (object_in_focus === "exit") {
+            if (this.object_in_focus === "exit") {
 
                 var result_elem = null
                 for (var i = 0; i < evacuation_objects_2.length; i++) {
@@ -296,15 +305,15 @@ class MyCircle extends Component {
                     console.log("solja inside circles are ", objects_inside_circle)
 
 
-                    var intersection = detected_objects.filter(value => -1 !== types_in_circle.indexOf(value));
+                    var intersection = this.detected_objects.filter(value => -1 !== types_in_circle.indexOf(value));
 
                     console.log("intersection is 2 ", intersection)
 
 
                     console.log("2 objects_inside_circle is ", types_in_circle)
-                    console.log("detected obj is ", detected_objects)
+                    console.log("detected obj is ", this.detected_objects)
 
-                    if (this.checkIfSame(types_in_circle, detected_objects)) {
+                    if (this.checkIfSame(types_in_circle, this.detected_objects)) {
 
                         console.log("objects inside circle final 2: ", objects_inside_circle);
                         var element_in_focus = this.getCoordinatesOfElementInFocus2(objects_inside_circle);
@@ -384,13 +393,13 @@ class MyCircle extends Component {
             var el = elements_in_circle[i]
             console.log("el is ", el.key)
 
-            if (object_in_focus === "fire_extinguisher") {
+            if (this.object_in_focus === "fire_extinguisher") {
                 if (el.key === "fire_extinguisher1" || el.key === "fire_extinguisher2") {
                     coordinates_of_focus = el.value;
                     break;
                 }
             }
-            if (object_in_focus === "defibrillator") {
+            if (this.object_in_focus === "defibrillator") {
 
                 if (el.key === "defibrillator") {
                     coordinates_of_focus = el.value;
@@ -398,7 +407,7 @@ class MyCircle extends Component {
                 }
             }
 
-            if (object_in_focus === "exit") {
+            if (this.object_in_focus === "exit") {
 
                 if (el.key === "exit") {
                     coordinates_of_focus = el.value;
@@ -422,13 +431,13 @@ class MyCircle extends Component {
             var el = elements_in_circle[i]
             console.log("el is ", el)
 
-            if (object_in_focus === "fire_extinguisher") {
+            if (this.object_in_focus === "fire_extinguisher") {
                 if (el.type === "fire_extinguisher") {
                     coordinates_of_focus = el.coordinates;
                     break;
                 }
             }
-            if (object_in_focus === "defibrillator") {
+            if (this.object_in_focus === "defibrillator") {
 
                 if (el.type === "defibrillator") {
                     coordinates_of_focus = el.coordinates;
@@ -436,7 +445,7 @@ class MyCircle extends Component {
                 }
             }
 
-            if (object_in_focus === "exit") {
+            if (this.object_in_focus === "exit") {
 
                 if (el.type === "exit") {
                     coordinates_of_focus = el.coordinates;
@@ -450,16 +459,16 @@ class MyCircle extends Component {
     }
 
     calculateCertainty() {
-        if (detected_objects.length === 1) {
-            if (object_in_focus === "fire_extinguisher") {
+        if (this.detected_objects.length === 1) {
+            if (this.object_in_focus === "fire_extinguisher") {
                 return this.getCoordinatesOfElementInFocus;
             }
 
-            if (object_in_focus === "defibrillator") {
+            if (this.object_in_focus === "defibrillator") {
                 return 1 / nr_defibr;
             }
 
-            if (object_in_focus === "exit") {
+            if (this.object_in_focus === "exit") {
                 return 1 / nr_exit;
             }
         }
@@ -475,7 +484,6 @@ class MyCircle extends Component {
 
         console.log("in redner")
         // mislam posle ke mora preku komponent da se prenesat...
-        const detected_objects = this.props.elements;
 
         //circle_center = this.findPosition();
         circle_center = this.findPosition2();
@@ -497,11 +505,11 @@ class MyCircle extends Component {
                         {map_positions.map(function (position, i) {
                             return <div>
 
-                                <Circle center={map_positions[i]} fillColor="blue" radius={20} />
-                                <Popup position={map_positions[i]} >
-                                    You are here with {certainty} probability.
-                                </Popup>
-
+                                <Circle center={map_positions[i]} fillColor="blue" radius={20} >
+                                    <Popup position={map_positions[i]} >
+                                        You are here with {certainty} probability.
+                                    </Popup>
+                                </Circle>
                             </div>;
                         })}
 

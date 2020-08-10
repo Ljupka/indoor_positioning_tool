@@ -11,7 +11,6 @@ import OtherLayersExample from './components/Tryout';
 import MyCircle from './components/Custom_Circle';
 import ImageUpload from './components/image_preview';
 
-
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
 
@@ -70,8 +69,9 @@ class App extends Component {
     maxZoom: 600,
     minZoom: 500,
     // prvior e vo fokus toj, okolu koj ke bide krugot
-    //detected_elements: ['fire_extinguisher', 'exit']
-    detected_elements: ['exit']
+    // ovde da se smeni otkako netz ke predict
+    detected_elements: ['fire_extinguisher', 'exit']
+    //detected_elements: ['exit']
 
   }
 
@@ -130,9 +130,11 @@ class App extends Component {
     */
 
     return (
+
+
       <div className="App">
 
-        <ImageUpload />
+        <ImageUpload elements={this.state.detected_elements} />
         <h2>Upload Image</h2>
         <form onSubmit={this.handleSubmit}>
           <p>
@@ -164,25 +166,25 @@ class App extends Component {
 
           <Marker position={position_fireext} icon={fireExt}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              Fire extinguisher
           </Popup>
           </Marker>
 
           <Marker position={position_fireext2} icon={fireExt}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              Fire extinguisher
           </Popup>
           </Marker>
 
           <Marker position={position_defibr} icon={defibr}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              Defibrilator
           </Popup>
           </Marker>
 
           <Marker position={position_exit} icon={exit}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              Exit
           </Popup>
           </Marker>
 
