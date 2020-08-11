@@ -12,6 +12,7 @@ import { circle } from 'leaflet';
 
 const position_fireext = [51.025728, 13.722753]
 const position_fireext2 = [51.025192, 13.723450]
+const position_fireext3 = [51.025800, 13.722758]
 const position_defibr = [51.025273, 13.722934]
 const position_exit = [51.025685, 13.722994]
 
@@ -29,10 +30,11 @@ const evacuation_objects_2 = [
     { "id": 1, "type": "fire_extinguisher", "coordinates": position_fireext },
     { "id": 2, "type": "exit", "coordinates": position_exit },
     { "id": 3, "type": "fire_extinguisher", "coordinates": position_fireext2 },
-    { "id": 4, "type": "defibrillator", "coordinates": position_defibr }
+    { "id": 4, "type": "defibrillator", "coordinates": position_defibr },
+    { "id": 5, "type": "fire_extinguisher", "coordinates": position_fireext3 }
 ]
 
-const nr_fireext = 2
+const nr_fireext = 3
 const nr_defibr = 1
 const nr_exit = 1
 
@@ -265,6 +267,7 @@ class MyCircle extends Component {
 
                 var objects_inside_circle = [];
                 var types_in_circle = [];
+                var middle_position = null;
 
 
                 var center = evacuation_objects_2[obj].coordinates;
@@ -313,14 +316,38 @@ class MyCircle extends Component {
                     console.log("2 objects_inside_circle is ", types_in_circle)
                     console.log("detected obj is ", this.detected_objects)
 
+                    // get middle position
+                    var sum_positions = [0, 0]
+                    for (var k = 0; k < objects_inside_circle.length; k++) {
+                        console.log("coord ", objects_inside_circle[k].coordinates)
+                        sum_positions[0] = sum_positions[0] + objects_inside_circle[k].coordinates[0];
+                        sum_positions[1] = sum_positions[1] + objects_inside_circle[k].coordinates[1];
+                    }
+
+                    console.log("MIDDLE 1 ", objects_inside_circle[0].coordinates)
+                    console.log("MIDDLE 2 ", objects_inside_circle[1].coordinates)
+                    console.log("MIDDLE IS ", sum_positions)
+
+                    var avg_x = sum_positions[0] / objects_inside_circle.length;
+                    var avg_y = sum_positions[1] / objects_inside_circle.length;
+
+                    middle_position = [avg_x, avg_y]
+                    console.log("MIDDLE  POSITION IS ", middle_position)
+
+
+
+
                     if (this.checkIfSame(types_in_circle, this.detected_objects)) {
 
+                        /*
                         console.log("objects inside circle final 2: ", objects_inside_circle);
                         var element_in_focus = this.getCoordinatesOfElementInFocus2(objects_inside_circle);
                         console.log("result is ", element_in_focus)
 
                         // mesto element_in_focus da returnnam 
                         return element_in_focus;
+                        */
+                        return middle_position;
                     }
 
                 }

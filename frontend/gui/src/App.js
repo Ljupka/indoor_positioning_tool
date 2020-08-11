@@ -114,6 +114,7 @@ class App extends Component {
 
     const position_fireext = [51.025728, 13.722753]
     const position_fireext2 = [51.025192, 13.723450]
+    const position_fireext3 = [51.025800, 13.722758]
     //const position_defibr = [51.025192, 13.723170]
 
     const position_defibr = [51.025273, 13.722934]
@@ -135,24 +136,7 @@ class App extends Component {
       <div className="App">
 
         <ImageUpload elements={this.state.detected_elements} />
-        <h2>Upload Image</h2>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <input type="text" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required />
-          </p>
-          <p>
-            <input type="text" placeholder='Content' id='content' value={this.state.content} onChange={this.handleChange} required />
 
-          </p>
-          <p>
-            <input type="file"
-              id="image"
-              accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
-          </p>
-          <input type="submit" />
-        </form>
-
-        <h3>Map</h3>
         <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -171,6 +155,12 @@ class App extends Component {
           </Marker>
 
           <Marker position={position_fireext2} icon={fireExt}>
+            <Popup>
+              Fire extinguisher
+          </Popup>
+          </Marker>
+
+          <Marker position={position_fireext3} icon={fireExt}>
             <Popup>
               Fire extinguisher
           </Popup>
