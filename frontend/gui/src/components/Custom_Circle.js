@@ -26,15 +26,17 @@ const evacuation_objects = {
 
 
 // can be stored in a database in the future
+//,{ "id": 5, "type": "fire_extinguisher", "coordinates": position_fireext3 }
 const evacuation_objects_2 = [
     { "id": 1, "type": "fire_extinguisher", "coordinates": position_fireext },
     { "id": 2, "type": "exit", "coordinates": position_exit },
     { "id": 3, "type": "fire_extinguisher", "coordinates": position_fireext2 },
-    { "id": 4, "type": "defibrillator", "coordinates": position_defibr },
-    { "id": 5, "type": "fire_extinguisher", "coordinates": position_fireext3 }
+    { "id": 4, "type": "defibrillator", "coordinates": position_defibr }
 ]
 
-const nr_fireext = 3
+
+// should be counted from a database in the future
+const nr_fireext = 2
 const nr_defibr = 1
 const nr_exit = 1
 

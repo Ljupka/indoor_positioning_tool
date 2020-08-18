@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin:0 auto;
 }
 
 .App-logo {
@@ -63,6 +64,7 @@ h3 {
   border-top: 1px solid black;
   border-left: 1px solid black;
   padding: 10px;
+  padding-left: 20px;
   margin: 15px;
   cursor: pointer;
 }
@@ -105,3 +107,66 @@ h3 {
   text-align: center;
   width: 500px;
 }
+
+
+
+.map_container{
+  width: 1000px;
+  position: relative;
+  float: left;
+  padding-top: 70px;
+ 
+}
+
+.previewComponent{
+  position: relative;
+  float:left;
+  padding-top: 70px;
+}
+
+.alertBox{
+  padding-left: 40px;
+}
+
+
+
+.pageTitle{ 
+  font-family:'Aileron';
+  font-size:30pt; 
+  letter-spacing:-3px;
+  color:grey;
+  font-weight: 20; 
+  padding-left:30px;
+  padding-top:15px;
+  padding-bottom: 15px;
+
+}
+
+@font-face {
+  font-family: 'Aileron';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Aileron' ), url('aileron.ultralight.otf') format('otf'); }
+
+
+.parentDiv{
+
+    width: 1800px;
+    height: 700px;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+      
+    
+    margin: auto;
+    margin-top: 50px;
+  
+}
+
+.formStyle{
+  padding-left:35px;
+}
+

@@ -70,7 +70,7 @@ class App extends Component {
     minZoom: 500,
     // prvior e vo fokus toj, okolu koj ke bide krugot
     // ovde da se smeni otkako netz ke predict
-    detected_elements: ['fire_extinguisher', 'exit']
+    detected_elements: ['fire_extinguisher']
     //detected_elements: ['exit']
 
   }
@@ -133,54 +133,48 @@ class App extends Component {
     return (
 
 
-      <div className="App">
-
+      <div className="App" class="parentDiv">
+        <h1 class="pageTitle">Indoor Positioning System</h1>
         <ImageUpload elements={this.state.detected_elements} />
+        <div class="map_container">
+          <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
+            <TileLayer
+              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
 
-        <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position} icon={myIcon}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+            <Marker position={position_fireext} icon={fireExt}>
+              <Popup>
+                Fire extinguisher
           </Popup>
-          </Marker>
+            </Marker>
 
-          <Marker position={position_fireext} icon={fireExt}>
-            <Popup>
-              Fire extinguisher
+            <Marker position={position_fireext2} icon={fireExt}>
+              <Popup>
+                Fire extinguisher
           </Popup>
-          </Marker>
+            </Marker>
 
-          <Marker position={position_fireext2} icon={fireExt}>
-            <Popup>
-              Fire extinguisher
+            <Marker position={position_defibr} icon={defibr}>
+              <Popup>
+                Defibrilator
           </Popup>
-          </Marker>
+            </Marker>
 
-          <Marker position={position_fireext3} icon={fireExt}>
-            <Popup>
-              Fire extinguisher
+            <Marker position={position_exit} icon={exit}>
+              <Popup>
+                Exit
           </Popup>
-          </Marker>
+            </Marker>
 
-          <Marker position={position_defibr} icon={defibr}>
-            <Popup>
-              Defibrilator
-          </Popup>
-          </Marker>
+            <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
 
-          <Marker position={position_exit} icon={exit}>
-            <Popup>
-              Exit
-          </Popup>
-          </Marker>
+          </Map>
 
-          <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
 
-        </Map>
+        </div>
+
+
 
       </div >
     );
