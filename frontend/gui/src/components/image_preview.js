@@ -28,6 +28,9 @@ class ImageUpload extends Component {
             })
             .catch(err => console.log(err))
 
+        this.props.setState({ imgLoaded: true });
+
+
     }
 
     _handleImageChange(e) {
@@ -62,6 +65,9 @@ class ImageUpload extends Component {
             alert_box = (<Alert showAlert={this.state.showAlert} message={"Detected objects are: " + this.props.elements} type="success" />);
         }
         else { console.log("its false") }
+
+
+
 
 
         return (

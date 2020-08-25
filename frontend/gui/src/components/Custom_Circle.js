@@ -521,12 +521,16 @@ class MyCircle extends Component {
 
         return (
 
+
             <div> {
                 certain_position ?
                     <div>
-                        <Circle center={circle_center} fillColor="blue" radius={20} />
-                        <div>{this.createRanges(radius)}</div>
-                        <div>{this.findPosition2()}</div>
+                        <Circle center={circle_center} fillColor="blue" radius={20} >
+                            <Popup position={circle_center} >
+                                You are here.
+                        </Popup>
+                        </Circle>
+
                     </div>
                     :
                     <div>

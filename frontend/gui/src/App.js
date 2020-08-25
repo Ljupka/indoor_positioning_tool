@@ -13,6 +13,7 @@ import ImageUpload from './components/image_preview';
 
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
+import { List } from 'antd/lib/form/Form';
 
 
 var myIcon = L.icon({
@@ -70,8 +71,9 @@ class App extends Component {
     minZoom: 500,
     // prvior e vo fokus toj, okolu koj ke bide krugot
     // ovde da se smeni otkako netz ke predict
-    detected_elements: ['fire_extinguisher']
-    //detected_elements: ['exit']
+    //detected_elements: ['fire_extinguisher', 'exit'],
+    detected_elements: ['fire_extinguisher'],
+    imageLoaded: false
 
   }
 
@@ -108,6 +110,26 @@ class App extends Component {
       .catch(err => console.log(err))
   };
 
+  // format list to look nicer 
+  lstElements() {
+
+
+    var lst = [];
+    for (var i = 0; i < this.state.detected_elements.length; i++) {
+
+      // do not add coma after last element
+      if (i !== this.state.detected_elements.length - 1) {
+        lst.push(this.state.detected_elements[i].toString() + ',');
+      }
+      else {
+        lst.push(this.state.detected_elements[i].toString());
+      }
+    }
+
+    console.log("element ", lst)
+    return lst;
+  }
+
 
   render() {
     const position = [this.state.lat, this.state.lng]
@@ -135,7 +157,13 @@ class App extends Component {
 
       <div className="App" class="parentDiv">
         <h1 class="pageTitle">Indoor Positioning System</h1>
-        <ImageUpload elements={this.state.detected_elements} />
+
+        <div class="info">
+          <img class="imgClass" src={require('./components/question.png')} />
+          <h2 class="desc"> The model is able to detect the following elements: fire_extinguisher,  exit, printer, screen, clock, chair, bin. <br /> Make sure you include them in the shot!</h2>
+        </div>
+        <ImageUpload setState={imgLoaded => { this.setState(imgLoaded) }} elements={this.state.detected_elements} />
+
         <div class="map_container">
           <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
             <TileLayer
@@ -167,7 +195,10 @@ class App extends Component {
           </Popup>
             </Marker>
 
-            <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
+            {this.state.imgLoaded ?
+              <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
+              : <h3>Upload image!</h3>
+            }
 
           </Map>
 
