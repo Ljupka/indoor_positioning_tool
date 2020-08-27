@@ -3,6 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import BaseRouter from './routes';
 import './App.css';
 import 'antd/dist/antd.css';
+import { Tag, Input, Tooltip } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 
 import CustomLayout from './containers/Layout';
 import ArticleList from './containers/ArticleListView';
@@ -73,7 +75,13 @@ class App extends Component {
     // ovde da se smeni otkako netz ke predict
     //detected_elements: ['fire_extinguisher', 'exit'],
     detected_elements: ['fire_extinguisher'],
-    imageLoaded: false
+    imgLoaded: false,
+    specifyElements: false,
+    tags: [],
+    inputVisible: false,
+    inputValue: '',
+    editInputIndex: -1,
+    editInputValue: '',
 
   }
 
@@ -110,6 +118,75 @@ class App extends Component {
       .catch(err => console.log(err))
   };
 
+
+  handleClick = (e) => {
+    console.log("called")
+    this.setState({
+      specifyElements: true
+    })
+
+    console.log("set to true")
+  };
+
+
+
+  // functions for the tag fragment
+  handleClose = removedTag => {
+    const tags = this.state.tags.filter(tag => tag !== removedTag);
+    console.log(tags);
+    this.setState({ tags });
+  };
+
+  showInput = () => {
+    this.setState({ inputVisible: true }, () => this.input.focus());
+  };
+
+  handleInputChange = e => {
+    this.setState({ inputValue: e.target.value });
+  };
+
+  handleInputConfirm = () => {
+    const { inputValue } = this.state;
+    let { tags } = this.state;
+    if (inputValue && tags.indexOf(inputValue) === -1) {
+      tags = [...tags, inputValue];
+    }
+    console.log(tags);
+    this.setState({
+      tags,
+      inputVisible: false,
+      inputValue: '',
+    });
+  };
+
+  handleEditInputChange = e => {
+    this.setState({ editInputValue: e.target.value });
+  };
+
+  handleEditInputConfirm = () => {
+    this.setState(({ tags, editInputIndex, editInputValue }) => {
+      const newTags = [...tags];
+      newTags[editInputIndex] = editInputValue;
+
+      return {
+        tags: newTags,
+        editInputIndex: -1,
+        editInputValue: '',
+      };
+    });
+  };
+
+  saveInputRef = input => {
+    this.input = input;
+  };
+
+  saveEditInputRef = input => {
+    this.editInput = input;
+  };
+
+
+
+
   // format list to look nicer 
   lstElements() {
 
@@ -131,6 +208,13 @@ class App extends Component {
   }
 
 
+  /*
+        <div class="info2">
+          <img class="imgClass" src={require('./components/question.png')} />
+          <h2 class="desc"> Select detected elements! You can insert: fire_extinguisher, exit, defibrillator. <br /> Please make sure that you use this exact spelling. <br /> Make sure you include them in the shot!</h2>
+        </div>
+  */
+
   render() {
     const position = [this.state.lat, this.state.lng]
 
@@ -142,7 +226,8 @@ class App extends Component {
     const position_defibr = [51.025273, 13.722934]
     const position_exit = [51.025685, 13.722994]
 
-    console.log("detected: ", this.state.detected_elements)
+    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = this.state;
+    const colors = ["magenta", "red", "volcano", "orange", "gold", "limegreen", "cyan", "blue", "geekblue", "purple"]
 
     /*in return was
             <Router>
@@ -158,11 +243,101 @@ class App extends Component {
       <div className="App" class="parentDiv">
         <h1 class="pageTitle">Indoor Positioning System</h1>
 
+
+        <div class="info2">
+          <img class="imgClass" src={require('./components/question.png')} />
+          <h2 class="desc"> Select detected elements! You can insert: fire_extinguisher, exit, defibrillator. <br /> Please make sure that you use this exact spelling. <br /> Make sure you include them in the shot!</h2>
+        </div>
+        <button class="button" onClick={this.handleClick}>
+          Specify detected objects
+         </button>
+
         <div class="info">
           <img class="imgClass" src={require('./components/question.png')} />
           <h2 class="desc"> The model is able to detect the following elements: fire_extinguisher,  exit, printer, screen, clock, chair, bin. <br /> Make sure you include them in the shot!</h2>
         </div>
         <ImageUpload setState={imgLoaded => { this.setState(imgLoaded) }} elements={this.state.detected_elements} />
+
+
+
+        {this.state.specifyElements ?
+          <div class="tagsBar">
+            {tags.map((tag, index) => {
+              if (editInputIndex === index) {
+                return (
+                  <Input
+                    ref={this.saveEditInputRef}
+                    key={tag}
+                    size="small"
+                    className="tag-input"
+                    value={editInputValue}
+                    onChange={this.handleEditInputChange}
+                    onBlur={this.handleEditInputConfirm}
+                    onPressEnter={this.handleEditInputConfirm}
+                  />
+                );
+              }
+
+              const isLongTag = tag.length > 20;
+
+              const tagElem = (
+                <Tag
+                  className="edit-tag"
+                  key={tag}
+                  closable={index !== 0}
+                  onClose={() => this.handleClose(tag)}
+                  color={colors[index]}
+
+                >
+                  <span class="new_tag"
+                    onDoubleClick={e => {
+                      if (index !== 0) {
+                        this.setState({ editInputIndex: index, editInputValue: tag }, () => {
+                          this.editInput.focus();
+                        });
+                        e.preventDefault();
+                      }
+                    }}
+                  >
+                    {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+                  </span>
+                </Tag>
+              );
+              return isLongTag ? (
+                <Tooltip title={tag} key={tag}>
+                  {tagElem}
+                </Tooltip>
+              ) : (
+                  tagElem
+                );
+            })}
+            {inputVisible && (
+              <Input
+                ref={this.saveInputRef}
+                type="text"
+                size="small"
+                className="tag-input"
+                value={inputValue}
+                onChange={this.handleInputChange}
+                onBlur={this.handleInputConfirm}
+                onPressEnter={this.handleInputConfirm}
+              />
+            )}
+            {!inputVisible && (
+              <Tag className="site-tag-plus" onClick={this.showInput}>
+                <PlusOutlined /> New Tag
+              </Tag>
+            )}
+          </div>
+
+
+
+          : <h3></h3>
+        }
+
+
+
+
 
         <div class="map_container">
           <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
@@ -201,9 +376,8 @@ class App extends Component {
             }
 
           </Map>
-
-
         </div>
+
 
 
 
