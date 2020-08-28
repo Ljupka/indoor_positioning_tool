@@ -74,17 +74,26 @@ class App extends Component {
     // prvior e vo fokus toj, okolu koj ke bide krugot
     // ovde da se smeni otkako netz ke predict
     //detected_elements: ['fire_extinguisher', 'exit'],
-    detected_elements: ['fire_extinguisher'],
+    detected_elements: ['fire_extinguisher', 'exit'],
     imgLoaded: false,
     specifyElements: false,
-    tags: [],
+    positionUser: false,
+    tags: [''],
     inputVisible: false,
     inputValue: '',
     editInputIndex: -1,
     editInputValue: '',
-
+    inserted_elements: [],
+    clear_map: false
   }
 
+
+
+  componentDidMount() {
+
+
+
+  }
 
 
   handleChange = (e) => {
@@ -120,13 +129,31 @@ class App extends Component {
 
 
   handleClick = (e) => {
-    console.log("called")
     this.setState({
       specifyElements: true
     })
-
-    console.log("set to true")
   };
+
+  getMapLocation = (e) => {
+    this.setState({
+      positionUser: true
+    })
+  };
+
+  /*
+  startAgain = (e) => {
+    this.setState({
+      clear_map: true,
+      detected_elements: null,
+      inserted_elements: null
+    })
+  };
+
+  below:
+            <button class="button2" onClick={this.startAgain}>
+            Start again
+         </button>
+  */
 
 
 
@@ -139,6 +166,7 @@ class App extends Component {
 
   showInput = () => {
     this.setState({ inputVisible: true }, () => this.input.focus());
+
   };
 
   handleInputChange = e => {
@@ -157,6 +185,9 @@ class App extends Component {
       inputVisible: false,
       inputValue: '',
     });
+
+    this.setState({ inserted_elements: [...this.state.inserted_elements, inputValue] });
+
   };
 
   handleEditInputChange = e => {
@@ -226,7 +257,7 @@ class App extends Component {
     const position_defibr = [51.025273, 13.722934]
     const position_exit = [51.025685, 13.722994]
 
-    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = this.state;
+    const { tags, inputVisible, inputValue, editInputIndex, editInputValue, inserted_elements } = this.state;
     const colors = ["magenta", "red", "volcano", "orange", "gold", "limegreen", "cyan", "blue", "geekblue", "purple"]
 
     /*in return was
@@ -237,6 +268,8 @@ class App extends Component {
         </Router>
     */
 
+
+
     return (
 
 
@@ -244,20 +277,27 @@ class App extends Component {
         <h1 class="pageTitle">Indoor Positioning System</h1>
 
 
-        <div class="info2">
-          <img class="imgClass" src={require('./components/question.png')} />
-          <h2 class="desc"> Select detected elements! You can insert: fire_extinguisher, exit, defibrillator. <br /> Please make sure that you use this exact spelling. <br /> Make sure you include them in the shot!</h2>
-        </div>
-        <button class="button" onClick={this.handleClick}>
-          Specify detected objects
-         </button>
 
         <div class="info">
           <img class="imgClass" src={require('./components/question.png')} />
-          <h2 class="desc"> The model is able to detect the following elements: fire_extinguisher,  exit, printer, screen, clock, chair, bin. <br /> Make sure you include them in the shot!</h2>
+          <h2 class="desc"> The model is able to detect the following elements: fire_extinguisher,  exit, printer, screen, clock, chair, bin. <br />
+         For the positioning currently are fire_extinguisher and exit used.   <br /> You can position yourself by taking an image of the aforementioned objects or you can specify the detected objects manually. You can insert: fire_extinguisher, exit, defibrillator. Please make sure that you use this exact spelling.
+         Restart page to position yourself again.</h2>
         </div>
+
+
         <ImageUpload setState={imgLoaded => { this.setState(imgLoaded) }} elements={this.state.detected_elements} />
 
+
+
+
+        <button class="button" onClick={this.getMapLocation}>
+          Position yourself
+         </button>
+
+        <button class="button" onClick={this.handleClick}>
+          Specify detected objects
+         </button>
 
 
         {this.state.specifyElements ?
@@ -340,6 +380,7 @@ class App extends Component {
 
 
         <div class="map_container">
+
           <Map className="map" center={position} scrollWheelZoom={false} touchZoom={false} bounds={map_bounds} maxBounds={map_bounds}>
             <TileLayer
               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -370,10 +411,17 @@ class App extends Component {
           </Popup>
             </Marker>
 
-            {this.state.imgLoaded ?
+            {this.state.imgLoaded && !this.state.clear_map ?
               <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
               : <h3>Upload image!</h3>
             }
+
+            {this.state.positionUser && !this.state.clear_map ?
+              <MyCircle elements={this.state.inserted_elements} fillColor="blue" radius={20} />
+              : <h4>Insert detected elements manually</h4>
+            }
+
+
 
           </Map>
         </div>

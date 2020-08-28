@@ -61,7 +61,6 @@ class MyCircle extends Component {
         super(props);
         this.detected_objects = this.props.elements;
         this.object_in_focus = this.detected_objects[0];
-        this.state = {};
     }
 
 
@@ -69,6 +68,8 @@ class MyCircle extends Component {
 
 
     componentDidMount() {
+
+        // reset clear_map to false
 
         console.log("its mounted")
 
@@ -221,6 +222,7 @@ class MyCircle extends Component {
     }
 
     findPosition2() {
+
 
         if (this.detected_objects.length === 1) {
 
@@ -512,6 +514,8 @@ class MyCircle extends Component {
         //const position_exit = [51.025685, 13.722994];
 
         console.log("in redner")
+
+
         // mislam posle ke mora preku komponent da se prenesat...
 
         //circle_center = this.findPosition();
