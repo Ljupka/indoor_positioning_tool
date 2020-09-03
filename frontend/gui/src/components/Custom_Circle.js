@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Circle, LeafletConsumer, Popup } from 'react-leaflet';
-import CustomForm from './Form';
-import { circle } from 'leaflet';
 
 
 

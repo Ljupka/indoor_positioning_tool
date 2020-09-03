@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import BaseRouter from './routes';
 import './App.css';
 import 'antd/dist/antd.css';
 import { Tag, Input, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
-import CustomLayout from './containers/Layout';
-import ArticleList from './containers/ArticleListView';
 import axios from 'axios';
-import OtherLayersExample from './components/Tryout';
 import MyCircle from './components/Custom_Circle';
 import ImageUpload from './components/image_preview';
 
@@ -239,13 +235,6 @@ class App extends Component {
   }
 
 
-  /*
-        <div class="info2">
-          <img class="imgClass" src={require('./components/question.png')} />
-          <h2 class="desc"> Select detected elements! You can insert: fire_extinguisher, exit, defibrillator. <br /> Please make sure that you use this exact spelling. <br /> Make sure you include them in the shot!</h2>
-        </div>
-  */
-
   render() {
     const position = [this.state.lat, this.state.lng]
 
@@ -274,16 +263,27 @@ class App extends Component {
 
 
       <div className="App" class="parentDiv">
+
         <h1 class="pageTitle">Indoor Positioning System</h1>
-
-
-
-        <div class="info">
-          <img class="imgClass" src={require('./components/question.png')} />
-          <h2 class="desc"> The model is able to detect the following elements: fire_extinguisher,  exit, printer, screen, clock, chair, bin. <br />
-         For the positioning currently are fire_extinguisher and exit used.   <br /> You can position yourself by taking an image of the aforementioned objects or you can specify the detected objects manually. You can insert: fire_extinguisher, exit, defibrillator. Please make sure that you use this exact spelling.
-         Restart page to position yourself again.</h2>
+        <div class="box">
+          <a href="#popup1">
+            <img class="imgClass" src={require('./components/question.png')} />
+          </a>
         </div>
+
+        <div id="popup1" class="overlay">
+          <div class="popup">
+            <h2>About the IPS</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+              The model is able to detect the following elements: fire_extinguisher,  exit, printer, screen, clock, chair, bin. <br />
+         For the positioning currently are fire_extinguisher and exit used.   <br /> You can position yourself by taking an image of the aforementioned objects or you can specify the detected objects manually. <br /> You can insert: fire_extinguisher, exit, defibrillator. Please make sure that you use this exact spelling.
+        <br /> Restart page to position yourself again.
+		</div>
+          </div>
+        </div>
+
+
 
 
         <ImageUpload setState={imgLoaded => { this.setState(imgLoaded) }} elements={this.state.detected_elements} />
