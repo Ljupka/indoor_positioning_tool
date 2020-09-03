@@ -1,11 +1,12 @@
-from indoor_app.models import Article, Image
+from indoor_app.models import Image
 from rest_framework import viewsets, permissions
 from django.http import HttpResponse
-from .serializers import ArticleSerializer, ImageSerializer
+from .serializers import ImageSerializer
 
 # Article Viewset
 
 
+"""
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     permission_classes = [
@@ -13,16 +14,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = ArticleSerializer
 
-    # overwrite built-in post method
-    """
-    def post(self, request, *args, **kwargs):
-        print("heeeeeeeere")
-        title = request.data['cover']
-        content = request.data['content']
-        image = request.data['image']
-        Article.objects.create(title=title, content=content, image=image)
-        return HTTPResponse({'message': 'Article created'}, status=200)
-    """
+
+"""
 
 
 class ImageViewSet(viewsets.ModelViewSet):
