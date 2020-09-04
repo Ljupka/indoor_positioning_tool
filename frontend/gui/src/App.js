@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import 'antd/dist/antd.css';
 import { Tag, Input, Tooltip } from 'antd';
@@ -12,6 +11,7 @@ import ImageUpload from './components/image_preview';
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
 import { List } from 'antd/lib/form/Form';
+
 
 
 var myIcon = L.icon({
@@ -71,6 +71,7 @@ class App extends Component {
     // ovde da se smeni otkako netz ke predict
     //detected_elements: ['fire_extinguisher', 'exit'],
     detected_elements: ['fire_extinguisher', 'exit'],
+    //detected_elements: [],
     imgLoaded: false,
     specifyElements: false,
     positionUser: false,
@@ -80,7 +81,8 @@ class App extends Component {
     editInputIndex: -1,
     editInputValue: '',
     inserted_elements: [],
-    clear_map: false
+    clear_map: false,
+    imgId: 1
   }
 
 
@@ -134,6 +136,19 @@ class App extends Component {
     this.setState({
       positionUser: true
     })
+  };
+
+  getDetections = (e) => {
+    let url = 'http://127.0.0.1:8000/indoor_app/';
+
+  axios.get(url).then(resp => {
+
+    let index = this.state.imgId - 1;
+    
+    this.setState({detected_elements:  resp.data[index].detected_objects });
+    console.log("img id  ", index)
+    console.log("AFTER GET ", resp.data[index].detected_objects);
+});
   };
 
   /*
@@ -257,13 +272,10 @@ class App extends Component {
         </Router>
     */
 
-
-
     return (
 
 
       <div className="App" class="parentDiv">
-
         <h1 class="pageTitle">Indoor Positioning System</h1>
         <div class="box">
           <a href="#popup1">
@@ -286,10 +298,13 @@ class App extends Component {
 
 
 
-        <ImageUpload setState={imgLoaded => { this.setState(imgLoaded) }} elements={this.state.detected_elements} />
+        <ImageUpload setState={imgLoaded => { this.setState(imgLoaded)}, imgId => { this.setState(imgId) }} elements={this.state.detected_elements} />
 
 
 
+        <button class='button' onClick={this.getDetections}>
+          Get Detections
+        </button>
 
         <button class="button" onClick={this.getMapLocation}>
           Position yourself

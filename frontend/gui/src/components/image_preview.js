@@ -6,7 +6,7 @@ import { Alert } from 'antd';
 class ImageUpload extends Component {
     constructor(props) {
         super(props);
-        this.state = { file: '', imagePreviewUrl: '', showAlert: false };
+        this.state = { file: '', imagePreviewUrl: '', showAlert: false};
     }
 
     _handleSubmit(e) {
@@ -15,6 +15,8 @@ class ImageUpload extends Component {
         let form_data = new FormData();
         form_data.append('image', this.state.file, this.state.file.name);
         console.log("form data is ", this.state.file)
+        
+        /*
         let url = 'http://127.0.0.1:8000/indoor_app/';
         axios.post(url, form_data, {
             headers: {
@@ -22,9 +24,24 @@ class ImageUpload extends Component {
             }
         })
             .then(res => {
-                console.log(res.data);
+                console.log("AFTER POST " , res.data);
 
                 this.setState({ showAlert: true })
+                this.props.setState({ imgId:  res.data.id });
+
+            })
+            .catch(err => console.log(err))
+        */
+
+        //let img_name = res.data.image;
+        let url = 'http://127.0.0.1:8000/indoor_app/';
+        axios.post(url, form_data)
+            .then(res => {
+                console.log("AFTER POST " , res.data);
+
+                this.setState({ showAlert: true })
+                this.props.setState({ imgId:  res.data.id });
+
             })
             .catch(err => console.log(err))
 

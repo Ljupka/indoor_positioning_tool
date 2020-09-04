@@ -10,8 +10,12 @@ router = routers.DefaultRouter()
 router.register('indoor_app', ImageViewSet, 'indoor_app')
 
 
+
+#path('indoor_app/post_image/', views.post_image)
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('date', views.current_datetime)
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

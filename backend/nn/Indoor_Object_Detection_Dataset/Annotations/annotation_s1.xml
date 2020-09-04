@@ -1,0 +1,1027 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name> TUT Indoor Object Detection Dataset</name>
+<comment>Created on 03-06-2018 by Bishwo Adhikari</comment>
+<images>
+  <image file='frame_s1_1.jpg'>
+    <box top='244' left='500' width='192' height='99'>
+      <label>exit</label>
+    </box>
+    <box top='358' left='742' width='218' height='105'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_10.jpg'>
+    <box top='97' left='651' width='79' height='81'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='354' left='667' width='109' height='281'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_100.jpg'>
+    <box top='159' left='460' width='172' height='169'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_101.jpg'>
+    <box top='114' left='577' width='238' height='303'>
+      <label>chair</label>
+    </box>
+    <box top='90' left='143' width='231' height='375'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_102.jpg'>
+    <box top='69' left='814' width='307' height='433'>
+      <label>chair</label>
+    </box>
+    <box top='10' left='218' width='440' height='550'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_103.jpg'>
+    <box top='14' left='148' width='305' height='432'>
+      <label>chair</label>
+    </box>
+    <box top='55' left='795' width='386' height='497'>
+      <label>chair</label>
+    </box>
+    <box top='20' left='463' width='155' height='588'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_104.jpg'>
+    <box top='112' left='866' width='342' height='539'>
+      <label>chair</label>
+    </box>
+    <box top='8' left='181' width='485' height='620'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_105.jpg'>
+    <box top='11' left='124' width='476' height='595'>
+      <label>chair</label>
+    </box>
+    <box top='97' left='821' width='325' height='514'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_106.jpg'>
+    <box top='110' left='367' width='255' height='318'>
+      <label>chair</label>
+    </box>
+    <box top='67' left='625' width='188' height='261'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_107.jpg'>
+    <box top='84' left='750' width='167' height='253'>
+      <label>chair</label>
+    </box>
+    <box top='106' left='412' width='260' height='427'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_108.jpg'>
+    <box top='71' left='730' width='195' height='279'>
+      <label>chair</label>
+    </box>
+    <box top='99' left='302' width='336' height='540'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_109.jpg'>
+    <box top='31' left='810' width='284' height='381'>
+      <label>chair</label>
+    </box>
+    <box top='73' left='314' width='354' height='541'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_11.jpg'>
+    <box top='118' left='649' width='79' height='77'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='396' left='671' width='86' height='241'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_110.jpg'>
+    <box top='108' left='322' width='366' height='559'>
+      <label>chair</label>
+    </box>
+    <box top='71' left='879' width='305' height='386'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_111.jpg'>
+    <box top='70' left='868' width='311' height='433'>
+      <label>chair</label>
+    </box>
+    <box top='115' left='235' width='420' height='598'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_112.jpg'>
+    <box top='80' left='236' width='398' height='625'>
+      <label>chair</label>
+    </box>
+    <box top='19' left='877' width='380' height='471'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_113.jpg'>
+    <box top='23' left='181' width='407' height='656'>
+      <label>chair</label>
+    </box>
+    <box top='3' left='871' width='384' height='448'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_114.jpg'>
+    <box top='237' left='567' width='95' height='55'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_115.jpg'>
+    <box top='239' left='563' width='108' height='61'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_116.jpg'>
+    <box top='222' left='578' width='116' height='71'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_117.jpg'>
+    <box top='268' left='524' width='137' height='78'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_118.jpg'>
+    <box top='275' left='582' width='132' height='94'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_119.jpg'>
+    <box top='246' left='577' width='134' height='105'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_12.jpg'>
+    <box top='122' left='651' width='75' height='73'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='399' left='672' width='75' height='215'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_120.jpg'>
+    <box top='269' left='577' width='158' height='125'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_121.jpg'>
+    <box top='289' left='540' width='175' height='164'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_122.jpg'>
+    <box top='147' left='571' width='174' height='178'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_123.jpg'>
+    <box top='174' left='552' width='155' height='184'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_124.jpg'>
+    <box top='170' left='526' width='190' height='244'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_125.jpg'>
+    <box top='144' left='508' width='288' height='330'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_126.jpg'>
+    <box top='20' left='434' width='266' height='360'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_127.jpg'>
+    <box top='295' left='534' width='165' height='87'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_128.jpg'>
+    <box top='301' left='499' width='192' height='99'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_129.jpg'>
+    <box top='227' left='534' width='231' height='117'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_13.jpg'>
+    <box top='147' left='667' width='68' height='72'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='411' left='680' width='79' height='223'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_130.jpg'>
+    <box top='230' left='472' width='257' height='124'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_131.jpg'>
+    <box top='199' left='458' width='261' height='128'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_132.jpg'>
+    <box top='181' left='469' width='277' height='129'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_133.jpg'>
+    <box top='69' left='673' width='285' height='432'>
+      <label>chair</label>
+    </box>
+    <box top='65' left='496' width='175' height='386'>
+      <label>chair</label>
+    </box>
+    <box top='61' left='216' width='142' height='312'>
+      <label>chair</label>
+    </box>
+    <box top='58' left='356' width='148' height='357'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_134.jpg'>
+    <box top='39' left='823' width='284' height='462'>
+      <label>chair</label>
+    </box>
+    <box top='50' left='605' width='209' height='346'>
+      <label>chair</label>
+    </box>
+    <box top='56' left='384' width='190' height='341'>
+      <label>chair</label>
+    </box>
+    <box top='72' left='206' width='177' height='292'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_135.jpg'>
+    <box top='7' left='785' width='313' height='499'>
+      <label>chair</label>
+    </box>
+    <box top='4' left='501' width='270' height='419'>
+      <label>chair</label>
+    </box>
+    <box top='20' left='231' width='265' height='456'>
+      <label>chair</label>
+    </box>
+    <box top='31' left='2' width='221' height='346'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_136.jpg'>
+    <box top='58' left='953' width='323' height='532'>
+      <label>chair</label>
+    </box>
+    <box top='61' left='645' width='299' height='530'>
+      <label>chair</label>
+    </box>
+    <box top='70' left='353' width='281' height='506'>
+      <label>chair</label>
+    </box>
+    <box top='81' left='30' width='312' height='485'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_137.jpg'>
+    <box top='35' left='671' width='256' height='553'>
+      <label>chair</label>
+    </box>
+    <box top='56' left='943' width='333' height='531'>
+      <label>chair</label>
+    </box>
+    <box top='76' left='364' width='284' height='508'>
+      <label>chair</label>
+    </box>
+    <box top='84' left='38' width='321' height='489'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_138.jpg'>
+    <box top='74' left='61' width='312' height='485'>
+      <label>chair</label>
+    </box>
+    <box top='58' left='380' width='283' height='518'>
+      <label>chair</label>
+    </box>
+    <box top='55' left='674' width='284' height='524'>
+      <label>chair</label>
+    </box>
+    <box top='54' left='972' width='296' height='527'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_139.jpg'>
+    <box top='32' left='140' width='297' height='493'>
+      <label>chair</label>
+    </box>
+    <box top='21' left='441' width='280' height='507'>
+      <label>chair</label>
+    </box>
+    <box top='20' left='741' width='294' height='522'>
+      <label>chair</label>
+    </box>
+    <box top='10' left='1041' width='223' height='537'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_14.jpg'>
+    <box top='130' left='691' width='63' height='73'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='382' left='698' width='79' height='225'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_141.jpg'>
+    <box top='221' left='463' width='195' height='102'>
+      <label>exit</label>
+    </box>
+    <box top='305' left='746' width='248' height='109'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_142.jpg'>
+    <box top='289' left='763' width='247' height='121'>
+      <label>exit</label>
+    </box>
+    <box top='202' left='463' width='199' height='103'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_143.jpg'>
+    <box top='202' left='469' width='200' height='102'>
+      <label>exit</label>
+    </box>
+    <box top='287' left='766' width='243' height='114'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_144.jpg'>
+    <box top='213' left='464' width='197' height='103'>
+      <label>exit</label>
+    </box>
+    <box top='299' left='756' width='239' height='119'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_145.jpg'>
+    <box top='207' left='460' width='203' height='104'>
+      <label>exit</label>
+    </box>
+    <box top='297' left='755' width='252' height='116'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_146.jpg'>
+    <box top='207' left='456' width='196' height='101'>
+      <label>exit</label>
+    </box>
+    <box top='295' left='756' width='242' height='116'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_147.jpg'>
+    <box top='278' left='736' width='249' height='117'>
+      <label>exit</label>
+    </box>
+    <box top='189' left='440' width='202' height='105'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_148.jpg'>
+    <box top='181' left='452' width='198' height='103'>
+      <label>exit</label>
+    </box>
+    <box top='269' left='748' width='249' height='119'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_149.jpg'>
+    <box top='186' left='445' width='202' height='103'>
+      <label>exit</label>
+    </box>
+    <box top='274' left='748' width='244' height='118'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_15.jpg'>
+    <box top='128' left='650' width='64' height='71'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='377' left='655' width='78' height='217'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_16.jpg'>
+    <box top='117' left='647' width='65' height='70'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='376' left='648' width='79' height='211'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_17.jpg'>
+    <box top='113' left='661' width='69' height='72'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='370' left='666' width='83' height='233'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_18.jpg'>
+    <box top='102' left='670' width='72' height='76'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='367' left='672' width='88' height='240'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_19.jpg'>
+    <box top='100' left='615' width='76' height='79'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='367' left='631' width='101' height='263'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_2.jpg'>
+    <box top='241' left='502' width='189' height='98'>
+      <label>exit</label>
+    </box>
+    <box top='344' left='740' width='215' height='112'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_20.jpg'>
+    <box top='108' left='570' width='76' height='77'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='392' left='586' width='85' height='244'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_21.jpg'>
+    <box top='94' left='533' width='75' height='76'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='371' left='551' width='84' height='240'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_22.jpg'>
+    <box top='108' left='538' width='74' height='78'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='395' left='557' width='86' height='245'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_23.jpg'>
+    <box top='37' left='786' width='124' height='91'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_24.jpg'>
+    <box top='556' left='305' width='43' height='80'>
+      <label>trashbin</label>
+    </box>
+    <box top='53' left='751' width='137' height='88'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_25.jpg'>
+    <box top='425' left='732' width='177' height='224'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_26.jpg'>
+    <box top='383' left='676' width='165' height='190'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_27.jpg'>
+    <box top='327' left='699' width='161' height='185'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_28.jpg'>
+    <box top='330' left='694' width='161' height='189'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_29.jpg'>
+    <box top='392' left='711' width='173' height='200'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_3.jpg'>
+    <box top='237' left='464' width='197' height='105'>
+      <label>exit</label>
+    </box>
+    <box top='360' left='708' width='212' height='104'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_30.jpg'>
+    <box top='80' left='554' width='98' height='144'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_31.jpg'>
+    <box top='118' left='639' width='106' height='146'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_32.jpg'>
+    <box top='178' left='551' width='98' height='163'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_33.jpg'>
+    <box top='80' left='542' width='98' height='223'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_34.jpg'>
+    <box top='473' left='806' width='130' height='152'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_35.jpg'>
+    <box top='350' left='730' width='101' height='153'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_36.jpg'>
+    <box top='111' left='821' width='40' height='46'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='440' left='119' width='72' height='116'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='264' left='829' width='59' height='136'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_37.jpg'>
+    <box top='137' left='754' width='38' height='45'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='456' left='149' width='62' height='107'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='284' left='761' width='61' height='134'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_38.jpg'>
+    <box top='387' left='271' width='46' height='89'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='114' left='793' width='37' height='38'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='243' left='806' width='46' height='125'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_39.jpg'>
+    <box top='78' left='770' width='33' height='37'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='201' left='779' width='45' height='112'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='313' left='361' width='29' height='70'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_4.jpg'>
+    <box top='208' left='475' width='181' height='100'>
+      <label>exit</label>
+    </box>
+    <box top='335' left='671' width='183' height='99'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_40.jpg'>
+    <box top='61' left='328' width='204' height='273'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_41.jpg'>
+    <box top='129' left='499' width='147' height='223'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_42.jpg'>
+    <box top='75' left='452' width='230' height='292'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_43.jpg'>
+    <box top='129' left='526' width='234' height='258'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_44.jpg'>
+    <box top='199' left='501' width='220' height='238'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_45.jpg'>
+    <box top='230' left='494' width='194' height='197'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_46.jpg'>
+    <box top='253' left='493' width='201' height='203'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_47.jpg'>
+    <box top='151' left='676' width='140' height='108'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_48.jpg'>
+    <box top='132' left='588' width='187' height='141'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_49.jpg'>
+    <box top='200' left='616' width='209' height='110'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_5.jpg'>
+    <box top='180' left='457' width='175' height='112'>
+      <label>exit</label>
+    </box>
+    <box top='310' left='632' width='161' height='112'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_50.jpg'>
+    <box top='163' left='560' width='227' height='119'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_51.jpg'>
+    <box top='134' left='523' width='221' height='94'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_52.jpg'>
+    <box top='142' left='582' width='219' height='99'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_53.jpg'>
+    <box top='152' left='605' width='221' height='111'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_54.jpg'>
+    <box top='185' left='631' width='220' height='101'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_55.jpg'>
+    <box top='70' left='578' width='147' height='142'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_56.jpg'>
+    <box top='64' left='600' width='151' height='122'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_57.jpg'>
+    <box top='66' left='639' width='153' height='125'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_58.jpg'>
+    <box top='103' left='600' width='169' height='108'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_59.jpg'>
+    <box top='142' left='529' width='167' height='102'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_6.jpg'>
+    <box top='133' left='920' width='100' height='100'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='499' left='948' width='142' height='226'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_60.jpg'>
+    <box top='132' left='509' width='173' height='94'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_61.jpg'>
+    <box top='125' left='495' width='175' height='95'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_62.jpg'>
+    <box top='120' left='516' width='185' height='85'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_63.jpg'>
+    <box top='142' left='603' width='220' height='107'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_64.jpg'>
+    <box top='165' left='505' width='225' height='110'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_65.jpg'>
+    <box top='299' left='621' width='78' height='76'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_66.jpg'>
+    <box top='293' left='589' width='117' height='112'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_67.jpg'>
+    <box top='267' left='612' width='138' height='130'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_68.jpg'>
+    <box top='275' left='515' width='161' height='145'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_69.jpg'>
+    <box top='245' left='544' width='204' height='190'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_7.jpg'>
+    <box top='104' left='773' width='95' height='90'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='470' left='783' width='103' height='241'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_70.jpg'>
+    <box top='257' left='475' width='237' height='220'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_71.jpg'>
+    <box top='227' left='461' width='281' height='267'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_72.jpg'>
+    <box top='184' left='437' width='314' height='300'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_73.jpg'>
+    <box top='163' left='436' width='358' height='330'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_74.jpg'>
+    <box top='159' left='419' width='363' height='329'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_75.jpg'>
+    <box top='136' left='436' width='334' height='322'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_76.jpg'>
+    <box top='169' left='608' width='124' height='97'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_77.jpg'>
+    <box top='274' left='613' width='140' height='91'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_78.jpg'>
+    <box top='196' left='603' width='186' height='107'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_79.jpg'>
+    <box top='115' left='528' width='229' height='121'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_8.jpg'>
+    <box top='68' left='737' width='83' height='85'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='371' left='750' width='110' height='303'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_80.jpg'>
+    <box top='49' left='518' width='262' height='132'>
+      <label>exit</label>
+    </box>
+  </image>
+  <image file='frame_s1_81.jpg'>
+    <box top='285' left='610' width='78' height='67'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_82.jpg'>
+    <box top='254' left='610' width='115' height='107'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_83.jpg'>
+    <box top='223' left='573' width='131' height='123'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_84.jpg'>
+    <box top='180' left='571' width='178' height='179'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_85.jpg'>
+    <box top='0' left='540' width='262' height='233'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_86.jpg'>
+    <box top='183' left='529' width='247' height='430'>
+      <label>trashbin</label>
+    </box>
+  </image>
+  <image file='frame_s1_87.jpg'>
+    <box top='136' left='516' width='309' height='543'>
+      <label>trashbin</label>
+    </box>
+  </image>
+  <image file='frame_s1_88.jpg'>
+    <box top='165' left='708' width='286' height='509'>
+      <label>trashbin</label>
+    </box>
+  </image>
+  <image file='frame_s1_89.jpg'>
+    <box top='50' left='783' width='344' height='430'>
+      <label>chair</label>
+    </box>
+    <box top='97' left='461' width='314' height='345'>
+      <label>chair</label>
+    </box>
+    <box top='68' left='254' width='207' height='332'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_9.jpg'>
+    <box top='81' left='685' width='77' height='83'>
+      <label>fireextinguisher</label>
+    </box>
+    <box top='392' left='703' width='90' height='254'>
+      <label>fireextinguisher</label>
+    </box>
+  </image>
+  <image file='frame_s1_90.jpg'>
+    <box top='76' left='324' width='225' height='359'>
+      <label>chair</label>
+    </box>
+    <box top='95' left='569' width='340' height='380'>
+      <label>chair</label>
+    </box>
+    <box top='75' left='932' width='346' height='434'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_91.jpg'>
+    <box top='115' left='278' width='273' height='353'>
+      <label>chair</label>
+    </box>
+    <box top='113' left='555' width='336' height='368'>
+      <label>chair</label>
+    </box>
+    <box top='73' left='948' width='331' height='402'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_92.jpg'>
+    <box top='155' left='257' width='263' height='347'>
+      <label>chair</label>
+    </box>
+    <box top='109' left='940' width='332' height='387'>
+      <label>chair</label>
+    </box>
+    <box top='157' left='545' width='363' height='363'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_93.jpg'>
+    <box top='164' left='160' width='300' height='379'>
+      <label>chair</label>
+    </box>
+    <box top='154' left='469' width='346' height='363'>
+      <label>chair</label>
+    </box>
+    <box top='106' left='827' width='307' height='359'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_94.jpg'>
+    <box top='191' left='164' width='270' height='351'>
+      <label>chair</label>
+    </box>
+    <box top='133' left='821' width='268' height='314'>
+      <label>chair</label>
+    </box>
+    <box top='185' left='487' width='291' height='307'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_95.jpg'>
+    <box top='204' left='484' width='331' height='353'>
+      <label>chair</label>
+    </box>
+    <box top='157' left='825' width='272' height='345'>
+      <label>chair</label>
+    </box>
+    <box top='214' left='169' width='297' height='367'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_96.jpg'>
+    <box top='224' left='189' width='283' height='350'>
+      <label>chair</label>
+    </box>
+    <box top='187' left='844' width='269' height='344'>
+      <label>chair</label>
+    </box>
+    <box top='229' left='496' width='337' height='335'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_97.jpg'>
+    <box top='220' left='580' width='331' height='331'>
+      <label>chair</label>
+    </box>
+    <box top='194' left='921' width='289' height='340'>
+      <label>chair</label>
+    </box>
+    <box top='205' left='278' width='285' height='362'>
+      <label>chair</label>
+    </box>
+  </image>
+  <image file='frame_s1_98.jpg'>
+    <box top='176' left='714' width='116' height='133'>
+      <label>clock</label>
+    </box>
+  </image>
+  <image file='frame_s1_99.jpg'>
+    <box top='175' left='628' width='137' height='145'>
+      <label>clock</label>
+    </box>
+  </image>
+</images>
+</dataset>
