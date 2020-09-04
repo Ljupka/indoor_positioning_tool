@@ -13,9 +13,7 @@ router.register('indoor_app', ImageViewSet, 'indoor_app')
 
 #path('indoor_app/post_image/', views.post_image)
 urlpatterns = [
-    path('', include(router.urls)),
-    path('date', views.current_datetime)
-
+    path('', include(router.urls))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
