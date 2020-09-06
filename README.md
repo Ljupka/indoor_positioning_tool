@@ -42,5 +42,5 @@ Apply changes to database:
 
 
 
- Testing out: The images in the folder nn_images are recommended to be uploaded in the app as the use of these images can currectly ensure correct positioning on the map.
+ Testing out: The images in the folder nn_images are recommended to be uploaded in the app as the use of these images can currently ensure correct positioning on the map.
 
