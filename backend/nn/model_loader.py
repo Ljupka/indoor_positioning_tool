@@ -23,12 +23,11 @@ def get_instance_segmentation_model(num_classes):
 def load_model():
 	
 	model = get_instance_segmentation_model(8)
-	print("after model in run")
+	print("model started")
 
 	# directory where the model is stored
 	dir = 'C:/Users/Ljupka/Desktop/App/indoor_simulation/backend/nn/'
 
-	print("dir is ", dir)
 
 	model.load_state_dict(torch.load(dir + "result_model20200618-1216"))
 

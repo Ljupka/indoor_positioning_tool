@@ -16,24 +16,7 @@ class ImageUpload extends Component {
         form_data.append('image', this.state.file, this.state.file.name);
         console.log("form data is ", this.state.file)
         
-        /*
-        let url = 'http://127.0.0.1:8000/indoor_app/';
-        axios.post(url, form_data, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        })
-            .then(res => {
-                console.log("AFTER POST " , res.data);
 
-                this.setState({ showAlert: true })
-                this.props.setState({ imgId:  res.data.id });
-
-            })
-            .catch(err => console.log(err))
-        */
-
-        //let img_name = res.data.image;
         let url = 'http://127.0.0.1:8000/indoor_app/';
         axios.post(url, form_data)
             .then(res => {
@@ -72,49 +55,50 @@ class ImageUpload extends Component {
   axios.get(url).then(resp => {
 
   
-    console.log(" in getDetections, loadedImg ", this.state.myloadedimg)
-    
- 
-    console.log("in getDet ", resp.data[0].image)
-
     // filter data to get the loadedImg
-    //...resp.data.filter(item => item.image=== this.state.loadedImg)
+    
 
     var json_data = JSON.stringify(resp.data)
     let img = this.state.myloadedimg.im;
-    console.log(" Loded ", img)
+    
     var result_image = JSON.parse(json_data).filter(function (entry) {
 
+    
     let formatted_entry = entry.image.split("/")
 
     // exract image name
     let img_name_ext = formatted_entry[formatted_entry.length - 1] 
-    console.log("loded list ", formatted_entry)
-    console.log("loded img_name_ext ", img_name_ext)
+    
     return img_name_ext === img });
     
 
-    console.log("getDet result ", result_image)
+  
 
     // split path to get image name
     let detections = result_image[0].detected_objects
-    let detections_list = detections.split(",")
+    detections = detections.slice(1,-1);
+    
+    let detections_list = detections.split(", ")
+    
+
+    detections = []
 
     //remove quotations
-    for (var el in detections_list){
-        el.replace(/['"]+/g, '')
+    for (var i=0; i<detections_list.length; i++){
+       
+        detections.push(detections_list[i].slice(1, -1));
     }
 
-    console.log("DETE ", detections_list)
-  
-    this.props.setState({detected_elements: detections_list });
+   
+    this.props.setState({detected_elements: detections });
     this.setState({ showAlert: true});
+    
     });
   };
 
 
   positionUser = (e) => {
-
+        
         this.props.setState({nn_based_positioning: true})
     
   };

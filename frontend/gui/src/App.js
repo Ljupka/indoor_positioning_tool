@@ -82,7 +82,8 @@ class App extends Component {
     clear_map: false,
     imgId: 1,
     nn_detected_elements: [],
-    nn_based_positioning: false
+    nn_based_positioning: false,
+    positioning_possible: false
   }
 
 
@@ -406,15 +407,17 @@ class App extends Component {
           </Popup>
             </Marker>
 
-            {this.state.imgLoaded &&  this.state.nn_based_positioning ?
-              <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
+            {this.state.imgLoaded && this.state.nn_based_positioning  ?
+              <MyCircle elements={this.state.detected_elements} setState={positioning_possible => { this.setState(positioning_possible)}} fillColor="blue" radius={20} />
               : <h3>Upload image!</h3>
             }
 
             {this.state.positionUser ?
-              <MyCircle elements={this.state.inserted_elements} fillColor="blue" radius={20} />
+              <MyCircle elements={this.state.inserted_elements} setState={positioning_possible => { this.setState(positioning_possible)}} fillColor="blue" radius={20} />
               : <h4>Insert detected elements manually</h4>
             }
+
+
 
 
 

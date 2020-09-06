@@ -188,8 +188,6 @@ class MyCircle extends Component {
                     }
 
 
-                    console.log("typskiiiiii  ")
-                    console.log(typeof this.detected_objects)
                     var intersection = this.detected_objects.filter(value => -1 !== types_in_circle.indexOf(value));
 
 
@@ -283,7 +281,7 @@ class MyCircle extends Component {
         for (var i = 0; i < elements_in_circle.length; i++) {
 
             var el = elements_in_circle[i]
-            console.log("el is ", el.key)
+           
 
             if (this.object_in_focus === "fire_extinguisher") {
                 if (el.key === "fire_extinguisher1" || el.key === "fire_extinguisher2") {
