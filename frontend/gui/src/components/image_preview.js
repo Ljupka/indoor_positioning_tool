@@ -153,13 +153,17 @@ class ImageUpload extends Component {
                         type="submit"
                         onClick={(e) => this._handleSubmit(e)}>Upload Image</button>
                 </form>
-               <button class='button' onClick={this.getDetections}>
+
+                <div class="image_positioning_buttons">
+               <button class='button positioning' onClick={this.positionUser}>
+                    Position yourself
+                </button>  
+
+               <button class='button positioning' onClick={this.getDetections}>
                     Get Detections
                 </button>
+                </div>
 
-               <button class='button' onClick={this.positionUser}>
-                    Position yourself on map
-                </button>
                 <div className="imgPreview">
                     {$imagePreview}
                 </div>

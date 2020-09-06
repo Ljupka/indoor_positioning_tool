@@ -77,6 +77,7 @@ h3 {
   border-right: 1px solid gray;
   border-top: 5px solid gray;
   border-bottom: 5px solid gray;
+  margin-top: 70px;
   }
 
   .imgPreview img {
@@ -290,4 +291,12 @@ h6 {
   .popup{
     width: 70%;
   }
+}
+
+.image_positioning_buttons{
+  margin-right: 70px;
+}
+
+.button.positioning{
+  width: 200px;
 }
