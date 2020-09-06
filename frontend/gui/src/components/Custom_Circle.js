@@ -309,7 +309,8 @@ class MyCircle extends Component {
 
                     console.log("solja inside circles are ", objects_inside_circle)
 
-
+                    console.log("typskiiiiii  ")
+                    console.log(typeof this.detected_objects)
                     var intersection = this.detected_objects.filter(value => -1 !== types_in_circle.indexOf(value));
 
                     console.log("intersection is 2 ", intersection)

@@ -6,7 +6,7 @@ import { Alert } from 'antd';
 class ImageUpload extends Component {
     constructor(props) {
         super(props);
-        this.state = { file: '', imagePreviewUrl: '', showAlert: false};
+        this.state = { file: '', imagePreviewUrl: '', showAlert: false, 'myloadedimg': null};
     }
 
     _handleSubmit(e) {
@@ -37,17 +37,16 @@ class ImageUpload extends Component {
         let url = 'http://127.0.0.1:8000/indoor_app/';
         axios.post(url, form_data)
             .then(res => {
-                console.log("AFTER POST " , res.data);
-
-                this.setState({ showAlert: true })
-                this.props.setState({ imgId:  res.data.id });
+                console.log("Posted data " , res);
 
             })
             .catch(err => console.log(err))
 
-        this.props.setState({ imgLoaded: true });
-
-
+          
+            let im = this.state.file.name;
+            console.log("THE PROPS ARE ", this.props)
+            this.props.setState({ imgLoaded: true});
+            this.setState({myloadedimg: {im}});
     }
 
     _handleImageChange(e) {
@@ -65,6 +64,61 @@ class ImageUpload extends Component {
 
         reader.readAsDataURL(file)
     }
+
+
+  getDetections = (e) => {
+    let url = 'http://127.0.0.1:8000/indoor_app/';
+
+  axios.get(url).then(resp => {
+
+  
+    console.log(" in getDetections, loadedImg ", this.state.myloadedimg)
+    
+ 
+    console.log("in getDet ", resp.data[0].image)
+
+    // filter data to get the loadedImg
+    //...resp.data.filter(item => item.image=== this.state.loadedImg)
+
+    var json_data = JSON.stringify(resp.data)
+    let img = this.state.myloadedimg.im;
+    console.log(" Loded ", img)
+    var result_image = JSON.parse(json_data).filter(function (entry) {
+
+    let formatted_entry = entry.image.split("/")
+
+    // exract image name
+    let img_name_ext = formatted_entry[formatted_entry.length - 1] 
+    console.log("loded list ", formatted_entry)
+    console.log("loded img_name_ext ", img_name_ext)
+    return img_name_ext === img });
+    
+
+    console.log("getDet result ", result_image)
+
+    // split path to get image name
+    let detections = result_image[0].detected_objects
+    let detections_list = detections.split(",")
+
+    //remove quotations
+    for (var el in detections_list){
+        el.replace(/['"]+/g, '')
+    }
+
+    console.log("DETE ", detections_list)
+  
+    this.props.setState({detected_elements: detections_list });
+    this.setState({ showAlert: true});
+    });
+  };
+
+
+  positionUser = (e) => {
+
+        this.props.setState({nn_based_positioning: true})
+    
+  };
+
 
     render() {
         let { imagePreviewUrl } = this.state;
@@ -93,6 +147,7 @@ class ImageUpload extends Component {
                 <div class="alertBox">
                     {alert_box}
                 </div>
+
                 <form class="formStyle" onSubmit={(e) => this._handleSubmit(e)}>
                     <input className="fileInput"
                         type="file"
@@ -101,6 +156,13 @@ class ImageUpload extends Component {
                         type="submit"
                         onClick={(e) => this._handleSubmit(e)}>Upload Image</button>
                 </form>
+               <button class='button' onClick={this.getDetections}>
+                    Get Detections
+                </button>
+
+               <button class='button' onClick={this.positionUser}>
+                    Position yourself on map
+                </button>
                 <div className="imgPreview">
                     {$imagePreview}
                 </div>

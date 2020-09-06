@@ -73,6 +73,7 @@ class App extends Component {
     detected_elements: ['fire_extinguisher', 'exit'],
     //detected_elements: [],
     imgLoaded: false,
+    loadedImg: null,
     specifyElements: false,
     positionUser: false,
     tags: [''],
@@ -82,7 +83,9 @@ class App extends Component {
     editInputValue: '',
     inserted_elements: [],
     clear_map: false,
-    imgId: 1
+    imgId: 1,
+    nn_detected_elements: [],
+    nn_based_positioning: false
   }
 
 
@@ -138,18 +141,6 @@ class App extends Component {
     })
   };
 
-  getDetections = (e) => {
-    let url = 'http://127.0.0.1:8000/indoor_app/';
-
-  axios.get(url).then(resp => {
-
-    let index = this.state.imgId - 1;
-    
-    this.setState({detected_elements:  resp.data[index].detected_objects });
-    console.log("img id  ", index)
-    console.log("AFTER GET ", resp.data[index].detected_objects);
-});
-  };
 
   /*
   startAgain = (e) => {
@@ -301,11 +292,6 @@ class App extends Component {
         <ImageUpload setState={imgLoaded => { this.setState(imgLoaded)}, imgId => { this.setState(imgId) }} elements={this.state.detected_elements} />
 
 
-
-        <button class='button' onClick={this.getDetections}>
-          Get Detections
-        </button>
-
         <button class="button" onClick={this.getMapLocation}>
           Position yourself
          </button>
@@ -426,12 +412,12 @@ class App extends Component {
           </Popup>
             </Marker>
 
-            {this.state.imgLoaded && !this.state.clear_map ?
+            {this.state.imgLoaded &&  this.state.nn_based_positioning ?
               <MyCircle elements={this.state.detected_elements} fillColor="blue" radius={20} />
               : <h3>Upload image!</h3>
             }
 
-            {this.state.positionUser && !this.state.clear_map ?
+            {this.state.positionUser ?
               <MyCircle elements={this.state.inserted_elements} fillColor="blue" radius={20} />
               : <h4>Insert detected elements manually</h4>
             }
