@@ -2,16 +2,45 @@
 
 Prototype app for the Indoor Positioning System proposed in the Master's Thesis ,,Detection and Positioning of Barriers to Augment Indoor Maps''.
 
-Start instructions
-	Server start: navigate to /backend/src and run command: python manage.py runserver
-	Client start: navigate to /frontend/gui and run command: npm start
-	
+Start Instructions 
 
-Packages
-	- install the required packages in /backend and /frontend by running the command npm -r install "requirements.txt" for the both directories
-	- for the Neural Netowork the packages torch and torchvision have to be installed
+Installing required packages
+1. install pip
+2. go to /backend
+3. run 'pip install -r "requirements.txt"
+4. go to /frontend
+5. run 'pip install -r "requirements.txt"
 
-Before running the app, make sure that the NN model is added to the directory /backend/nn. The model used is the file result_model20200618-1216 included in the submitted documents. The path to the model has to be manually specified in the file /backend/nn/model_loader.py
+NN preparation
 
-Using the images in the folder nn_images are recommended to be uploaded in the app as with the use of these images correct positioning on the map can be ensured.
+1. torch and torchvision packages have to be installed on the system.
+2. add file result_model20200618-1216 to /backend/nn directory (the file result_model20200618-1216 is included in the submitted documents)
+3. specify path to the result_model20200618-1216 in /backend/nn/model.py 
+Remark: each time an image is uploaded, the name of the image has to be unique!
+
+Start Server
+
+1. go to /backend 
+2. run 'python3 manage.py runserver'
+
+
+Start Client
+
+1. go to /frontend/gui
+2. run 'npm start'
+
+For problems with 'npm start' uninstall and reinstall the project dependencies with 
+1. rm -rf node_modules
+2. run 'npm install'
+3. run 'npm start'
+
+
+Apply changes to database:
+1. go to backend/src
+2. run 'python manage.py makemigrations'
+3. run 'python manage.py migrate'
+
+
+
+ Testing out: The images in the folder nn_images are recommended to be uploaded in the app as the use of these images can currectly ensure correct positioning on the map.
 
