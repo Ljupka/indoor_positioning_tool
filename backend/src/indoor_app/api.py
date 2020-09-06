@@ -36,21 +36,19 @@ class ImageViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = ImageSerializer
 
-    def create(self, request): # Here is the new update comes <<<<
+
+    def create(self, request): 
         post_data = request.data
         print("POSTED DATA ", post_data)
 
 
 
-        
-        #img_name = request.data['image']
         image = request.data['image']
 
         model = load_model()
         detections = predict2(model, image)
 
-        print("DETECTIONS ")
-        print(detections)
+        
 
         new_image = Image.objects.create(image=image, detected_objects=detections)
         new_image.save()
@@ -58,18 +56,8 @@ class ImageViewSet(viewsets.ModelViewSet):
         response = HttpResponse(status=200)
         response["image"] = image
         response["detected_objects"] = detections
-        print("RESPONSE IS ", response["image"])
+       
         return response
 
 
-    """
-    def post_image(self, request, *args, **kwargs):
-        print("heeeeeeeere")
-        img_id = request.data['id']
-        #img_name = request.data['image']
-        image = request.data['image']
-        new_image = Image.objects.create(id=img_id, image=image, detected_objects=["lala"])
-        new_image.save()
-        return HTTPResponse({'message': 'Image created'}, status=200)  
-    """ 
 

@@ -67,9 +67,6 @@ class App extends Component {
     zoom: 500,
     maxZoom: 600,
     minZoom: 500,
-    // prvior e vo fokus toj, okolu koj ke bide krugot
-    // ovde da se smeni otkako netz ke predict
-    //detected_elements: ['fire_extinguisher', 'exit'],
     detected_elements: ['fire_extinguisher', 'exit'],
     //detected_elements: [],
     imgLoaded: false,
@@ -111,7 +108,6 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     let form_data = new FormData();
     form_data.append('image', this.state.image, this.state.image.name);
     form_data.append('title', this.state.title);
@@ -162,7 +158,6 @@ class App extends Component {
   // functions for the tag fragment
   handleClose = removedTag => {
     const tags = this.state.tags.filter(tag => tag !== removedTag);
-    console.log(tags);
     this.setState({ tags });
   };
 
@@ -236,7 +231,6 @@ class App extends Component {
       }
     }
 
-    console.log("element ", lst)
     return lst;
   }
 

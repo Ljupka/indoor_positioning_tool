@@ -20,14 +20,12 @@ def get_instance_segmentation_model(num_classes):
 
 # model 4 
 model = get_instance_segmentation_model(8)
-print("after model in run")
-#model.load_state_dict(torch.load("result_model"))
+print("model started")
 
 model.load_state_dict(torch.load("result_model20200618-1216"))
 
 model.eval()
 
-#predict(model, 'frame_s3_562.jpg')
 
 
 file_read = open('testset_groundtruth.csv', mode='r')
@@ -37,28 +35,14 @@ reader = csv.reader(file_read, delimiter=',')
 file_write = open('testset_predictions.csv', mode='w', newline='')
 writer = csv.writer(file_write)
 
-"""
-for column in reader:
 
-	#print("column is ", column[0])
 
-	start = time.time()
-	predict(model, column[0], writer)
-	end = time.time()
-
-	result_time = end - start
-	print("time is ", result_time)
-
-	"""
-
-#rootdir = 'C:/Users/Ljupka/Desktop/New NN/indooro/Indoor_Object_Detection_Dataset/Images/Test'
 rootdir = os.getcwd() + 'Indoor_Object_Detection_Dataset/Images/Test'
 print("rootdir is ", rootdir)
 
 for  subdir, dirs,files in os.walk(rootdir):
 	for file in files:
 		#start = time.time()
-		#print("file name ", file)
 
 		predict(model, file, writer)
 		#end = time.time()

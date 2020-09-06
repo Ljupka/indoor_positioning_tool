@@ -132,12 +132,9 @@ class ImageUpload extends Component {
         }
 
         if (this.state.showAlert === true) {
-            console.log("its true")
+           
             alert_box = (<Alert showAlert={this.state.showAlert} message={"Detected objects are: " + this.props.elements} type="success" />);
         }
-        else { console.log("its false") }
-
-
 
 
 

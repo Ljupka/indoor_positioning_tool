@@ -121,7 +121,7 @@ def show_boxes (image_name, boxes, labels, scores):
 
 
 
-# function to predict on image
+# function to predict on image with bounding boxes output
 def predict (model, img_name, write_file):
 
 	#rootdir = 'C:/Users/Ljupka/Desktop/New NN/indooro/Indoor_Object_Detection_Dataset/Images/Test'
@@ -129,31 +129,23 @@ def predict (model, img_name, write_file):
 
 	#img_path = os.path.join(rootdir, img_name)
 	
-	# for images from Info fak
+	
 	img_path = img_name
-	#print("img path is ", img_path)
 
 	img = Image.open(img_path).convert("RGB")
 	img = trans(img)
 	model.eval()
-	#print("IMG LOOKS like this: ", img, "img size is ", img.shape)
+
 	predictions = model([img])
-	#print("predictions are ", predictions)
 
-	#print("model looks like ", model)
-
-	#predictedTop5_test = torch.topk(predictions[0].boxes,5)
-	#print("predicted topk are ", predictedTop5_test)
 
 	list_elem = predictions[0]
 
 	boxes_tensor = list_elem["boxes"]
-	#print("boxes are: ", boxes_tensor)
 
 
 	labels_tensor = list_elem["labels"]
-	#print("labels are ", labels)
-
+	
 	scores_tensor = list_elem["scores"]
 
 	#convert tensors to lists
@@ -165,21 +157,12 @@ def predict (model, img_name, write_file):
 	# get names of the labels
 	label_names  = []
 	for i in labels:
-		#should later be changed to fit other labels!!! 
-		#label_name = COCO_INSTANCE_CATEGORY_NAMES[i]
 		label_name = label_categories[i]
 		label_names.append(label_name)
-
-	print("label names is ", label_names)
-
-
-	print("scores ", scores)
-
 
 
 	i = 0
 	for b in boxes:
-		#print ("b is" , b)
 		row_values = []
 		row_values.append(img_name)
 		
@@ -187,6 +170,7 @@ def predict (model, img_name, write_file):
 		row_values.append(b[1])
 		row_values.append(b[2])
 		row_values.append(b[3])
+
 		# append label
 		row_values.append(labels[i])
 		# append scores
@@ -203,38 +187,30 @@ def predict (model, img_name, write_file):
 
 
 
-# function to predict on an uploaded image
+# function to predict on an uploaded image for the prototype; returs list of detected objects
 def predict2 (model, img_name):
 
-	#rootdir = 'C:/Users/Ljupka/Desktop/New NN/indooro/Indoor_Object_Detection_Dataset/Images/Test'
+
 	trans = transforms.ToTensor()
 
-	#img_path = os.path.join(rootdir, img_name)
 	
-	# for images from Info fak
 	img_path = img_name
-	#print("img path is ", img_path)
 
 	img = Image.open(img_path).convert("RGB")
 	img = trans(img)
 	model.eval()
-	#print("IMG LOOKS like this: ", img, "img size is ", img.shape)
+	
 	predictions = model([img])
-	#print("predictions are ", predictions)
-
-	#print("model looks like ", model)
-
-	#predictedTop5_test = torch.topk(predictions[0].boxes,5)
-	#print("predicted topk are ", predictedTop5_test)
+	
 
 	list_elem = predictions[0]
 
 	boxes_tensor = list_elem["boxes"]
-	#print("boxes are: ", boxes_tensor)
+	
 
 
 	labels_tensor = list_elem["labels"]
-	#print("labels are ", labels)
+	
 
 	scores_tensor = list_elem["scores"]
 
@@ -247,15 +223,10 @@ def predict2 (model, img_name):
 	# get names of the labels
 	label_names  = []
 	for i in labels:
-		#should later be changed to fit other labels!!! 
-		#label_name = COCO_INSTANCE_CATEGORY_NAMES[i]
 		label_name = label_categories[i]
 		label_names.append(label_name)
 
-	print("label names is ", label_names)
-
-
-	print("scores ", scores)
+	
 
 	return label_names;
 

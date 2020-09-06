@@ -25,7 +25,7 @@ def load_model():
 	model = get_instance_segmentation_model(8)
 	print("after model in run")
 
-	# directory to where the model is stored
+	# directory where the model is stored
 	dir = 'C:/Users/Ljupka/Desktop/App/indoor_simulation/backend/nn/'
 
 	print("dir is ", dir)
