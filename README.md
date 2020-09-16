@@ -20,7 +20,7 @@ Remark: each time an image is uploaded, the name of the image has to be unique!
 
 Start Server
 
-1. go to /backend 
+1. go to /backend/src
 2. run 'python3 manage.py runserver'
 
 
