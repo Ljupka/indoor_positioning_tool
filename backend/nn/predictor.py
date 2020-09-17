@@ -25,7 +25,7 @@ COCO_INSTANCE_CATEGORY_NAMES = [
     'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
 ]
 
-label_categories = ['','screen', 'clock', 'chair', 'bin', 'exit', 'printer', 'fireextinguisher']
+label_categories = ['','screen', 'clock', 'chair', 'bin', 'exit', 'printer', 'fire_extinguisher']
 
 
 # draw bounding boxes on the image
